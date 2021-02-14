@@ -7,13 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		52BAFBF525D97B3D00E6F52A /* QuizEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 52BAFBF325D97B3D00E6F52A /* QuizEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		52BAFC2325D98A7C00E6F52A /* QuizEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BAFC2225D98A7C00E6F52A /* QuizEngineTests.swift */; };
+		52BAFC2525D98A7C00E6F52A /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BAFBF025D97B3D00E6F52A /* QuizEngine.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		52BAFC2625D98A7C00E6F52A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52BAFBE725D97B3D00E6F52A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52BAFBEF25D97B3D00E6F52A;
+			remoteInfo = QuizEngine;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		52BAFBF025D97B3D00E6F52A /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		52BAFBF325D97B3D00E6F52A /* QuizEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuizEngine.h; sourceTree = "<group>"; };
 		52BAFBF425D97B3D00E6F52A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52BAFC2025D98A7C00E6F52A /* QuizEngineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizEngineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		52BAFC2225D98A7C00E6F52A /* QuizEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizEngineTests.swift; sourceTree = "<group>"; };
+		52BAFC2425D98A7C00E6F52A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -24,6 +37,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		52BAFC1D25D98A7C00E6F52A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52BAFC2525D98A7C00E6F52A /* QuizEngine.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -31,6 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				52BAFBF225D97B3D00E6F52A /* QuizEngine */,
+				52BAFC2125D98A7C00E6F52A /* QuizEngineTests */,
 				52BAFBF125D97B3D00E6F52A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -39,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				52BAFBF025D97B3D00E6F52A /* QuizEngine.framework */,
+				52BAFC2025D98A7C00E6F52A /* QuizEngineTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -46,10 +69,18 @@
 		52BAFBF225D97B3D00E6F52A /* QuizEngine */ = {
 			isa = PBXGroup;
 			children = (
-				52BAFBF325D97B3D00E6F52A /* QuizEngine.h */,
 				52BAFBF425D97B3D00E6F52A /* Info.plist */,
 			);
 			path = QuizEngine;
+			sourceTree = "<group>";
+		};
+		52BAFC2125D98A7C00E6F52A /* QuizEngineTests */ = {
+			isa = PBXGroup;
+			children = (
+				52BAFC2225D98A7C00E6F52A /* QuizEngineTests.swift */,
+				52BAFC2425D98A7C00E6F52A /* Info.plist */,
+			);
+			path = QuizEngineTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,7 +90,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52BAFBF525D97B3D00E6F52A /* QuizEngine.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,15 +114,37 @@
 			productReference = 52BAFBF025D97B3D00E6F52A /* QuizEngine.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		52BAFC1F25D98A7C00E6F52A /* QuizEngineTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52BAFC2825D98A7C00E6F52A /* Build configuration list for PBXNativeTarget "QuizEngineTests" */;
+			buildPhases = (
+				52BAFC1C25D98A7C00E6F52A /* Sources */,
+				52BAFC1D25D98A7C00E6F52A /* Frameworks */,
+				52BAFC1E25D98A7C00E6F52A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52BAFC2725D98A7C00E6F52A /* PBXTargetDependency */,
+			);
+			name = QuizEngineTests;
+			productName = QuizEngineTests;
+			productReference = 52BAFC2025D98A7C00E6F52A /* QuizEngineTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		52BAFBE725D97B3D00E6F52A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					52BAFBEF25D97B3D00E6F52A = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					52BAFC1F25D98A7C00E6F52A = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
@@ -111,12 +163,20 @@
 			projectRoot = "";
 			targets = (
 				52BAFBEF25D97B3D00E6F52A /* QuizEngine */,
+				52BAFC1F25D98A7C00E6F52A /* QuizEngineTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		52BAFBEE25D97B3D00E6F52A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52BAFC1E25D98A7C00E6F52A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -133,7 +193,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		52BAFC1C25D98A7C00E6F52A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52BAFC2325D98A7C00E6F52A /* QuizEngineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		52BAFC2725D98A7C00E6F52A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52BAFBEF25D97B3D00E6F52A /* QuizEngine */;
+			targetProxy = 52BAFC2625D98A7C00E6F52A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		52BAFBF625D97B3D00E6F52A /* Debug */ = {
@@ -305,6 +381,42 @@
 			};
 			name = Release;
 		};
+		52BAFC2925D98A7C00E6F52A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = SZX87D45Z2;
+				INFOPLIST_FILE = QuizEngineTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.br.rafaelfreitas.QuizEngineTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		52BAFC2A25D98A7C00E6F52A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = SZX87D45Z2;
+				INFOPLIST_FILE = QuizEngineTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.br.rafaelfreitas.QuizEngineTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -322,6 +434,15 @@
 			buildConfigurations = (
 				52BAFBF925D97B3D00E6F52A /* Debug */,
 				52BAFBFA25D97B3D00E6F52A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52BAFC2825D98A7C00E6F52A /* Build configuration list for PBXNativeTarget "QuizEngineTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52BAFC2925D98A7C00E6F52A /* Debug */,
+				52BAFC2A25D98A7C00E6F52A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
