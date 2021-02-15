@@ -49,17 +49,7 @@ class QuizEngineTests: XCTestCase {
         //should
         XCTAssertEqual(router.routedQuestions, ["Q1"])
     }
-    
-    func testStartAndAnswerFirstQuestoin_withTwoQuestion_routesToSecondQuestion(){
-        //given
-        let sut = makeSut(questions: ["Q1", "Q2"])
-        sut.start()
-        //when
-        router.answerCallback("A1")
-        //should
-        XCTAssertEqual(router.routedQuestions, ["Q1", "Q2"])
-    }
-    
+        
     func testStartTwice_withTwoQuestion_routesToFirstQuestionTwice(){
         //given
         let sut = makeSut(questions: ["Q1", "Q2"])
@@ -83,12 +73,22 @@ class QuizEngineTests: XCTestCase {
         XCTAssertEqual(router.routedQuestions, ["Q1", "Q2", "Q3"])
     }
     
+    func testStartAndAnswerFirstQuestion_withOneQuestion_doesNotRouteToAnotherQuestion(){
+        //given
+        let sut = makeSut(questions: ["Q1"])
+        sut.start()
+        //when
+        router.answerCallback("A1")
+        //should
+        XCTAssertEqual(router.routedQuestions, ["Q1"])
+    }
+    
     //MARK: - Router Spy
 
     class RouterSpy: Router {
         var routedQuestions: [String] = []
-        var answerCallback: ((String) -> Void) = {_ in }
-        func routeToQuestion(question: String, answerCallback: @escaping (String) -> Void) {
+        var answerCallback: Router.AnswerCallBack = {_ in }
+        func route(to question: String, answerCallback: @escaping Router.AnswerCallBack) {
             self.answerCallback = answerCallback
             routedQuestions.append(question)
         }
