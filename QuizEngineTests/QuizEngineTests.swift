@@ -37,6 +37,23 @@ class QuizEngineTests: XCTestCase {
         XCTAssertEqual(router.routedQuestions, ["Q1"])
     }
     
+    func testStart_withOneQuestion_doesNotRouteToResult(){
+        //when
+        makeSut(questions: ["Q1"]).start()
+        //should
+        XCTAssertNil(router.routedResult)
+    }
+    
+    func testStart_withTwoQuestions_doesNotRouteToResult(){
+        //given
+        let sut = makeSut(questions: ["Q1", "Q2"])
+        sut.start()
+        //when
+        router.answerCallback("A1")
+        //should
+        XCTAssertNil(router.routedResult)
+    }
+    
     func testStart_withOneQuestion_routesToCorrectQuestion_2(){
         //when
         makeSut(questions: ["Q2"]).start()
@@ -126,12 +143,7 @@ class QuizEngineTests: XCTestCase {
     private func makeSut(questions: [String]) -> Flow {
         Flow(questions: questions, router: router)
     }
-    
-    //MARK: - Helpers
-    
-    private func makeSut(questions: [String]) -> Flow {
-        Flow(questions: questions, router: router)
-    }
+
 }
 
 
