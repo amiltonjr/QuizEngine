@@ -26,6 +26,7 @@ class Flow {
     func start() {
         if let question = questions.first {
             router.route(to: question, answerCallback: routeToNextQuestion(question: question))
+
         } else {
             router.routeTo(result: result)
         }

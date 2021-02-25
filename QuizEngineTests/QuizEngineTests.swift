@@ -103,13 +103,13 @@ class QuizEngineTests: XCTestCase {
         //should
         XCTAssertEqual(router.routedResult!, ["Q1": "A1", "Q2": "A2"])
     }
-    
-    
+
     //MARK: - Router Spy
 
     class RouterSpy: Router {
         var routedQuestions: [String] = []
         var routedResult: [String: String]? = nil
+
         var answerCallback: Router.AnswerCallBack = {_ in }
         func route(to question: String, answerCallback: @escaping Router.AnswerCallBack) {
             self.answerCallback = answerCallback
@@ -119,6 +119,12 @@ class QuizEngineTests: XCTestCase {
         func routeTo(result: [String: String]) {
             routedResult = result
         }
+    }
+    
+    //MARK: - Helpers
+    
+    private func makeSut(questions: [String]) -> Flow {
+        Flow(questions: questions, router: router)
     }
     
     //MARK: - Helpers
