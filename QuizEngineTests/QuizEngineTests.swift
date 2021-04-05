@@ -127,8 +127,8 @@ class QuizEngineTests: XCTestCase {
         var routedQuestions: [String] = []
         var routedResult: [String: String]? = nil
 
-        var answerCallback: Router.AnswerCallBack = {_ in }
-        func route(to question: String, answerCallback: @escaping Router.AnswerCallBack) {
+        var answerCallback: (Answer) -> Void = {_ in }
+        func route(to question: String, answerCallback: @escaping (String) -> Void) {
             self.answerCallback = answerCallback
             routedQuestions.append(question)
         }
@@ -140,7 +140,7 @@ class QuizEngineTests: XCTestCase {
     
     //MARK: - Helpers
     
-    private func makeSut(questions: [String]) -> Flow {
+    private func makeSut(questions: [String]) -> Flow<String, String, RouterSpy> {
         Flow(questions: questions, router: router)
     }
 
