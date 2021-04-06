@@ -107,7 +107,7 @@ class QuizEngineTests: XCTestCase {
         //when
         makeSut(questions: []).start()
         //should
-        XCTAssertEqual(router.routedResult, [:])
+        XCTAssertEqual(router.routedResult?.answers, [:])
     }
     
     func testStart_withTwoQuestion_routesToResult(){
@@ -118,14 +118,39 @@ class QuizEngineTests: XCTestCase {
         router.answerCallback("A1")
         router.answerCallback("A2")
         //should
-        XCTAssertEqual(router.routedResult!, ["Q1": "A1", "Q2": "A2"])
+        XCTAssertEqual(router.routedResult!.answers, ["Q1": "A1", "Q2": "A2"])
     }
-
+    
+    func testStart_withTwoQuestion_scores(){
+        //given
+        let sut = makeSut(questions: ["Q1", "Q2"], scoring: {_ in 10})
+        sut.start()
+        //when
+        router.answerCallback("A1")
+        router.answerCallback("A2")
+        //should
+        XCTAssertEqual(router.routedResult!.score, 10)
+    }
+    
+    func testStart_withTwoQuestion_scoresWithRightAnswer(){
+        //given
+        var receivedAnswers = [String: String]()
+        let sut = makeSut(questions: ["Q1", "Q2"], scoring: {answers in
+            receivedAnswers = answers
+            return 10
+        })
+        sut.start()
+        //when
+        router.answerCallback("A1")
+        router.answerCallback("A2")
+        //should
+        XCTAssertEqual(receivedAnswers, ["Q1": "A1", "Q2": "A2"])
+    }
     //MARK: - Router Spy
 
     class RouterSpy: Router {
         var routedQuestions: [String] = []
-        var routedResult: [String: String]? = nil
+        var routedResult: Result<String, String>? = nil
 
         var answerCallback: (Answer) -> Void = {_ in }
         func route(to question: String, answerCallback: @escaping (String) -> Void) {
@@ -133,17 +158,19 @@ class QuizEngineTests: XCTestCase {
             routedQuestions.append(question)
         }
         
-        func routeTo(result: [String: String]) {
+        func routeTo(result: Result<String, String>) {
             routedResult = result
         }
     }
     
     //MARK: - Helpers
     
-    private func makeSut(questions: [String]) -> Flow<String, String, RouterSpy> {
-        Flow(questions: questions, router: router)
+    private func makeSut(
+        questions: [String],
+        scoring: @escaping ([String: String]) -> Int = {_ in 0}
+    ) -> Flow<String, String, RouterSpy> {
+        Flow(questions: questions, router: router, scoring: scoring)
     }
-
 }
 
 

@@ -7,29 +7,23 @@
 
 import Foundation
 
-protocol Router {
-    associatedtype Question: Hashable
-    associatedtype Answer
-    typealias AnswerCallBack = (Answer) -> Void
-    func route(to question: Question, answerCallback: @escaping AnswerCallBack)
-    func routeTo(result: [Question: Answer])
-}
-
 class Flow<Question, Answer, R: Router> where R.Question == Question, R.Answer == Answer {
     var router: R
     var questions: [Question]
-    var result: [Question: Answer] = [:]
+    var answers: [Question: Answer] = [:]
+    var scoring: ([Question: Answer]) -> Int
     
-    init(questions: [Question], router: R) {
+    init(questions: [Question], router: R, scoring: @escaping ([Question: Answer]) -> Int) {
         self.router = router
         self.questions = questions
+        self.scoring = scoring
     }
     
     func start() {
         if let question = questions.first {
             router.route(to: question, answerCallback: nextCallback(question: question))
         } else {
-            router.routeTo(result: result)
+            router.routeTo(result: result())
         }
     }
     
@@ -39,15 +33,20 @@ class Flow<Question, Answer, R: Router> where R.Question == Question, R.Answer =
     
     private func routeNext(_ question: Question, _ answer: Answer) {
         if let currentQuestionIndex = questions.firstIndex(of: question) {
-            result[question] = answer
+            answers[question] = answer
             
             let nextQuestionIndex = currentQuestionIndex + 1
             if  nextQuestionIndex < questions.count {
                 let nextQuestion = questions[nextQuestionIndex]
                 router.route(to: nextQuestion, answerCallback: nextCallback(question: nextQuestion))
             } else {
-                router.routeTo(result: result)
+                router.routeTo(result: result())
             }
         }
     }
+    
+    private func result() -> Result<Question, Answer> {
+        Result(answers: answers, score: scoring(answers))
+    }
+
 }
