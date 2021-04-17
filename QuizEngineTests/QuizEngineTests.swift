@@ -146,22 +146,6 @@ class QuizEngineTests: XCTestCase {
         //should
         XCTAssertEqual(receivedAnswers, ["Q1": "A1", "Q2": "A2"])
     }
-    //MARK: - Router Spy
-
-    class RouterSpy: Router {
-        var routedQuestions: [String] = []
-        var routedResult: Result<String, String>? = nil
-
-        var answerCallback: (Answer) -> Void = {_ in }
-        func route(to question: String, answerCallback: @escaping (String) -> Void) {
-            self.answerCallback = answerCallback
-            routedQuestions.append(question)
-        }
-        
-        func routeTo(result: Result<String, String>) {
-            routedResult = result
-        }
-    }
     
     //MARK: - Helpers
     
