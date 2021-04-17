@@ -96,17 +96,9 @@
 				52A49813261C8A8A00E5E69F /* GameTests.swift */,
 				52BAFC2225D98A7C00E6F52A /* QuizEngineTests.swift */,
 				52A49822261C8F2800E5E69F /* RouterSpy.swift */,
-				52F2F3CA25EE5D5A00CAC4D6 /* New Group */,
 				52BAFC2425D98A7C00E6F52A /* Info.plist */,
 			);
 			path = QuizEngineTests;
-			sourceTree = "<group>";
-		};
-		52F2F3CA25EE5D5A00CAC4D6 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
